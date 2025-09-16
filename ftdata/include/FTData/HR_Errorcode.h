@@ -1,0 +1,768 @@
+/*
+* Copyright(c++) 2019.7.12,�����д�����������޹�˾�����з���
+* All rights reserved
+*
+*/
+
+#ifndef __HR_ERROR_CODE_H_
+#define __HR_ERROR_CODE_H_
+
+/***************************************************************
+**控制器系统状态，控制器实时将该状态刷入与motion中共享内存中
+***************************************************************/
+enum EN_SystemState
+{
+  REC_ControllerNotInit = 40000,
+  REC_ControllerInNotRunning = 40001,
+  REC_ControllerAlreadyStarted = 40002,
+  REC_ControllerAlreadyClosed = 40003,
+  REC_RobotInFreeDriveState = 40004,
+  REC_RobotInBreakingState = 40005,
+  REC_RobotInHoldingState = 40006,
+  REC_RobotInTrackingState = 40007,
+  REC_RobotInForceControlState = 40008,
+  REC_RobotInSimulationState = 40009,
+  REC_RobotInMovingState = 40010,
+  REC_RobotInErrorState = 40011,
+  REC_RobotInDisableState = 40012,
+  REC_RobotInStandbyState = 40013,
+  REC_RobotInStoppingState = 40014,
+  REC_RobotInPauseState = 40015,
+  REC_RobotNotInFreeDriveState = 40016,
+  REC_RobotNotInBreakingState = 40017,
+  REC_RobotNotInHoldingState = 40018,
+  REC_RobotNotInTrackingState = 40019,
+  REC_RobotNotInForceControlState = 40020,
+  REC_RobotNotInSimulationState = 40021,
+  REC_RobotNotInMovingState = 40022,
+  REC_RobotNotInErrorState = 40023,
+  REC_RobotNotInDisableState = 40024,
+  REC_RobotNotInStandbyState = 40025,
+  REC_RobotNotInStoppingState = 40026,
+  REC_RobotNotInPauseState = 40027,
+  REC_RobotOnEnabling = 40028,
+  REC_RobotNotEnable = 40029,
+  REC_RobotAlreadyEnable = 40030,
+  REC_RobotOnDisabling = 40031,
+  REC_RobotAlreadyDisable = 40032,
+  REC_RobotNotDisable = 40033,
+  REC_ParametersError = 40034,
+  REC_TimeOutError = 40035,
+  REC_ExecEnablingSlaveStatusError = 40036,
+  REC_ExecEnablingError = 40037,
+  REC_ExecEnablingTimeOutError = 40038,
+  REC_ExecEnablingAxisGroupStatusError = 40039,
+  REC_ExecDisablingSlaveStatusError = 40040,
+  REC_ExecDisablingTimeOutError = 40041,
+  REC_ExecResetStatusError = 40042,
+  REC_ExecInterruptStatusError = 40043,
+  REC_ExecInterruptTimeOutError = 40044,
+  REC_ExecContinueStatusError = 40045,
+  REC_ExecContinueTimeOutError = 40046,
+  REC_ExecStopStatusError = 40047,
+  REC_ExecStopTimeOutError = 40048,
+  REC_ExecSetHomeEncodeError = 40049,
+  REC_ExecSetHomeEncodeTimeOutError = 40050,
+  REC_ExecResetAxisStatusError = 40051,
+  REC_ExecResetAxisTimeOutError = 40052,
+  REC_RobotInNotElectrifyError = 40053,
+  REC_RobotInEmergencyStopState = 40054,
+  REC_RobotInSafeGuardState = 40055,
+  REC_CmdFormatError = 40056,
+  REC_InvalidCommandError = 40057,
+  REC_EndIOTypeError = 40058,
+  REC_CheckModbusStateTimeOut = 40059,
+  REC_InvalidSlaveID = 40060,
+  REC_InvalidFunction = 40061,
+  REC_ResponseTimeout = 40062,
+  REC_InvalidCRC = 40063,
+  REC_MoveECalculateError = 40064,
+  REC_WriteModbusBaudError = 40065,
+  REC_WriteModbusDataBitError = 40066,
+  REC_WriteModbusParityBitError = 40067,
+  REC_WriteModbusStopBitError = 40068,
+  REC_ReadFileError = 40069,
+  REC_OutOfMaxPointCntError = 40070,
+  REC_ServoEsJNotInitError = 40071,
+  REC_ReadServoEsJPointError = 40072,
+
+  REC_ReadSNError = 40080,
+  REC_SetSNError = 40081,
+  REC_OutOfMaxVelocityLimitError = 40082,
+  REC_OutOfMaxAccelerationLimitError = 40083,
+  REC_OutOfMaxRadiusLimitError = 40084,
+  REC_OutOfMaxArcLengthError = 40085,
+  REC_OrientModeParamsError = 40086,
+  REC_MoveSParamsError = 40087,
+  REC_OutOfAxisIDLimitError = 40088,
+  REC_OutOfDirectionLimitError = 40089,
+  REC_OutOfDistanceLimitError = 40090,
+  REC_JointMotionNotCurrentlySupported = 40091,
+  REC_RobotExecutingMovePathJ = 40092,
+  REC_RobotExecutingMovePathL = 40093,
+  REC_RobotExecutingMoveZ = 40094,
+  REC_RobotIDError = 40095,
+  REC_RobotNotInMovePathJOLMoving = 40096,
+
+  //力传感器断开连接
+  REC_ForceSensorDisconnected = 40097,
+  REC_ConveyorTrackingMoveCmdError = 40098,
+
+  REC_OutSideOfJointLimit = 49502,
+  REC_Singularity = 49503,
+  REC_OutOfRobotWorkingspace = 49504,
+  REC_GeneralStoppingCriterion = 49505,
+
+  REC_SensedForceDataOutOfStartThreshold = 49506,
+  REC_SensedForceDataOutOfLimit = 49507,
+
+  REC_TargetPoseExceptWorkingSpace = 49601,
+  REC_TargetJointPosOutOfLimit = 49602,
+
+  REC_UnsupportMotionCmdInTracking = 49605,
+  REC_MotionInProgress = 49606,
+
+  REC_ExceptionStopStatus = 49621,
+  REC_Stopping = 49622,
+
+  REC_MovePathErrorStartJointPosition = 49631,
+  REC_ServoJErrorEmptyJointPositionCmd = 49632,
+  REC_MoveEErrorStartJointPosition = 49633,
+  REC_RobotExecutingMovePathJOLError = 49635,
+  REC_MoveCErrorVerticalForNormalVector = 49636
+
+};
+
+/*************************************************************************
+**  控制器错误码定义
+*************************************************************************/
+enum EN_CtrlerErrCode
+{
+  CEC_Normal = 0,
+  // 驱动错误码
+  // 短路错误-short circuit error
+  CEC_ShortCircuitError = 10000,
+  // 过压错误-Over voltage error
+  CEC_OverVoltageError = 10001,
+  // 欠压错误-under voltage error
+  CEC_UnderVoltageError = 10002,
+  // 速度过超错误-over velocity error
+  CEC_VelocityOverError = 10003,
+  // 执行时错误-execute error
+  CEC_ExecuteError = 10004,
+  // RMS过流错误-over current error
+  CEC_RMSOverCurrentError = 10005,
+  // 编码器错误-encoder error
+  CEC_EncoderError = 10006,
+  // 位置跟随错误-follow position error
+  CEC_PositionFollowError = 10007,
+  // 速度跟随错误-follow velocity error
+  CEC_VelocityFollowError = 10008,
+  // 超负限位错误-over negative limit error
+  CEC_NegativeLimitError = 10009,
+  // 超正限位错误-over positive limit error
+  CEC_PositiveLimitError = 10010,
+  // 伺服过温错误-server over heating error
+  CEC_ServerOverHeating = 10011,
+  // 过最大电流错误-over max current error
+  CEC_MaxCurrentError = 10012,
+  // 急停错误-emergency error
+  CEC_EmergencyStopError = 10013,
+  // UDM错误-UDM error
+  CEC_UDMError = 10014,
+  // 伺服参数错误-server parameters error
+  CEC_ServerParameterError = 10015,
+  // 从站掉线-slave drop
+  CEC_SlaveDropped = 10016,
+  // 安全碰撞错误-Collision stop error
+  CEC_CollisionShutdown = 10017,
+  // 计算错误-Calcilate error
+  CEC_CalculateError = 10018,
+  // 超出关节限位- Out Of Limit Error
+  CEC_OutOfLimitError = 10019,
+  // 超出最大电流限制-out of max axis current
+  CEC_OutOfAxisCurrent = 10020,
+  // 负载或安装角度参数错误-payload or mounting parameters error
+  CEC_PayloadOrMountingParamError = 10021,
+  // 超出负关节安全空间-out of negative joint safe space
+  CEC_OutSafeSpaceAcsNegative = 10022,
+  // 超出正关节安全空间-out of positive joint safe space
+  CEC_OutSafeSpaceAcsPositive = 10023,
+  // 超出负空间安全空间-out of negative cartesian safe space
+  CEC_OutSafeSpacePcsNegative = 10024,
+  // 超出正空间安全空间-out of negative cartesian safe space
+  CEC_OutSafeSpacePcsPositive = 10025,
+  // SDK错误-SDK error
+  CEC_SDKError = 10026,
+  // 奇异点错误-singularity error
+  CEC_SingularityError = 10027,
+  CEC_FTData_OverLimit = 10028,
+  CEC_GeneralStoppingCriterion = 10029,
+  CEC_ForceControllError = 10030,
+  CEC_OutOfMaxForceAllowLimit = 10031,
+  CEC_OutOfMaxForceFreeDriveStartForceLimit = 10032,
+  // 单轴错误-single axis error
+  CEC_SingleAxisError = 10053,
+  // 超出工作区域
+  CEC_AxisGroup_OutSideOfWorkingArea = 10054,
+  CEC_MonitorMotionConstraintStatus_ErrorStatus = 10055,
+  CEC_MonitorMotionConstraintStatus_OverJointVelocityLimit = 10056,
+  CEC_MonitorMotionConstraintStatus_OverLinearVelocityLimit = 10057,
+  CEC_MonitorMotionConstraintStatus_OverMomentumLimit = 10058,
+  CEC_MonitorMotionConstraintStatus_OverPowerLimit = 10059,
+  CEC_RobotCannotPause = 10060,
+  CEC_AxisEnableError = 10061,         // Error occurred in axis enabling
+  CEC_AxisDisableError = 10062,        // Error occurred in axis disabling
+  CEC_AxisGroupStopError = 10063,      // Error occurred in axisgroup stopping
+  CEC_AxisGroupResetError = 10064,     // Error occurred in axisgroup resetting
+  CEC_AxisGroupInterruptError = 10065, // Error occurred in axisgroup interrupt
+  CEC_AxisGroupContinueError = 10066,  // Error occurred in axisgroup continue
+  CEC_AxisGroupSetHomePositionError = 10067,
+  //////////////////////////////////////////////////////////////////
+
+  CEC_DI_GENERAL_COMMUNICATION_ERROR = 15000,
+  CEC_DI_AXIS_ERROR = 15001,
+  CEC_DI_FIELDBUS_LOST_SYNCRONICITY = 15002,
+  CEC_DI_SWLIMITS_EXCEEDED = 15003,
+  CEC_DI_HWLIMITS_EXCEEDED = 15004,
+  CEC_DI_LINEAR_AXIS_OUTOFRANGE = 15005,
+  CEC_DI_HALT_OR_QUICKSTOP_NOT_SUPPORTED = 15006,
+  CEC_DI_VOLTAGE_DISABLED = 15007,
+  CEC_DI_IRREGULAR_ACTPOSITION = 15008,
+  CEC_DI_POSITIONLAGERROR = 15009,
+  CEC_DI_HOMING_ERROR = 15010,
+  CEC_DI_LICENSING_ERROR = 15011,
+  CEC_REGULATOR_OR_START_NOT_SET = 15012,
+  CEC_WRONG_CONTROLLER_MODE = 15013,
+  CEC_INVALID_ACTION_FOR_LOGICAL = 15014,
+  CEC_FB_WASNT_CALLED_DURING_MOTION = 15015,
+  CEC_AXIS_IS_NO_AXIS_REF = 15016,
+  CEC_AXIS_REF_CHANGED_DURING_OPERATION = 15017,
+  CEC_FB_ACTIVE_AXIS_DISABLED = 15018,
+  CEC_AXIS_NOT_READY_FOR_MOTION = 15019,
+  CEC_AXIS_ERROR_DURING_MOTION = 15020,
+  CEC_VD_MAX_VELOCITY_EXCEEDED = 15021,
+  CEC_VD_MAX_ACCELERATION_EXCEEDED = 15022,
+  CEC_VD_MAX_DECELERATION_EXCEEDED = 15023,
+  CEC_3SH_INVALID_VELACC_VALUES = 15024,
+  CEC_3SH_MODE_NEEDS_HWLIMIT = 15025,
+  CEC_FRC_NO_FREE_HANDLE = 15026,
+  CEC_MAC_INITIALIZATION_FAILED = 15027,
+  CEC_MAC_INVALID_TASK_HANDLE = 15028,
+  CEC_MAC_TOO_MANY_TASKS = 15029,
+  CEC_MAC_ATOMIC_ADD_FAILED = 15030,
+  CEC_SDO_INVALID_DATALENGTH = 15031,
+  CEC_SCM_NOT_SUPPORTED = 15032,
+  CEC_SCM_AXIS_IN_WRONG_STATE = 15033,
+  CEC_SCM_INTERRUPTED = 15034,
+  CEC_ST_WRONG_CONTROLLER_MODE = 15035,
+  CEC_RAG_ERROR_DURING_STARTUP = 15036,
+  CEC_RAG_ERROR_AXIS_NOT_INITIALIZED = 15037,
+  CEC_PP_WRONG_AXIS_TYPE = 15038,
+  CEC_PP_NUMBER_OF_ABSOLUTE_BITS_INVALID = 15039,
+  CEC_CGR_ZERO_VALUES = 15040,
+  CEC_CGR_DRIVE_POWERED = 15041,
+  CEC_CGR_INVALID_POSPERIOD = 15042,
+  CEC_CGR_POSPERIOD_NOT_INTEGRAL = 15043,
+  CEC_P_FTASKCYCLE_EMPTY = 15044,
+  CEC_R_NO_ERROR_TO_RESET = 15045,
+  CEC_R_DRIVE_DOESNT_ANSWER = 15046,
+  CEC_R_ERROR_NOT_RESETTABLE = 15047,
+  CEC_R_DRIVE_DOESNT_ANSWER_IN_TIME = 15048,
+  CEC_R_CANNOT_RESET_COMMUNICATION_ERROR = 15049,
+  CEC_RP_PARAM_UNKNOWN = 15050,
+  CEC_RP_REQUESTING_ERROR = 15051,
+  CEC_RP_DRIVE_PARAMETER_NOT_MAPPED = 15052,
+  CEC_RP_PARAM_CONVERSION_ERROR = 15053,
+  CEC_WP_PARAM_INVALID = 15054,
+  CEC_WP_SENDING_ERROR = 15055,
+  CEC_WP_DRIVE_PARAMETER_NOT_MAPPED = 15056,
+  CEC_WP_PARAM_CONVERSION_ERROR = 15057,
+  CEC_H_AXIS_WASNT_STANDSTILL = 15058,
+  CEC_H_AXIS_DIDNT_START_HOMING = 15059,
+  CEC_H_AXIS_DIDNT_ANSWER = 15060,
+  CEC_H_ERROR_WHEN_STOPPING = 15061,
+  CEC_H_AXIS_IN_ERRORSTOP = 15062,
+  CEC_MS_UNKNOWN_STOPPING_ERROR = 15063,
+  CEC_MS_INVALID_ACCDEC_VALUES = 15064,
+  CEC_MS_DIRECTION_NOT_APPLICABLE = 15065,
+  CEC_MS_AXIS_IN_ERRORSTOP = 15066,
+  CEC_BLOCKING_MC_STOP_WASNT_CALLED = 15067,
+  CEC_MS_AXIS_ALREADY_STOPPING = 15068,
+  CEC_UNKNOWN_TASK_INTERVAL = 15069,
+  CEC_MA_INVALID_VELACC_VALUES = 15070,
+  CEC_MA_INVALID_DIRECTION = 15071,
+  CEC_MR_INVALID_VELACC_VALUES = 15072,
+  CEC_MR_INVALID_DIRECTION = 15073,
+  CEC_MAD_INVALID_VELACC_VALUES = 15074,
+  CEC_MAD_INVALID_DIRECTION = 15075,
+  CEC_MSI_INVALID_VELACC_VALUES = 15076,
+  CEC_MSI_INVALID_DIRECTION = 15077,
+  CEC_MSI_INVALID_EXECUTION_ORDER = 15078,
+  CEC_LOGICAL_NO_REAL_AXIS = 15079,
+  CEC_MV_INVALID_ACCDEC_VALUES = 15080,
+  CEC_MV_DIRECTION_NOT_APPLICABLE = 15081,
+  CEC_PP_ARRAYSIZE = 15082,
+  CEC_PP_STEP0MS = 15083,
+  CEC_VP_ARRAYSIZE = 15084,
+  CEC_VP_STEP0MS = 15085,
+  CEC_AP_ARRAYSIZE = 15086,
+  CEC_AP_STEP0MS = 15087,
+  CEC_TP_TRIGGEROCCUPIED = 15088,
+  CEC_TP_COULDNT_SET_WINDOW = 15089,
+  CEC_TP_COMM_ERROR = 15090,
+  CEC_AT_TRIGGERNOTOCCUPIED = 15091,
+  CEC_MCR_INVALID_VELACC_VALUES = 15092,
+  CEC_MCR_INVALID_DIRECTION = 15093,
+  CEC_MCA_INVALID_VELACC_VALUES = 15094,
+  CEC_MCA_INVALID_DIRECTION = 15095,
+  CEC_MCA_DIRECTION_NOT_APPLICABLE = 15096,
+  CEC_SDL_INVALID_AXIS_STATE = 15097,
+  CEC_SDL_INVALID_VELACC_VALUES = 15098,
+  CEC_CR_NO_TAPPETS_IN_CAM = 15099,
+  CEC_CR_TOO_MANY_TAPPETS = 15100,
+  CEC_CR_MORE_THAN_32_ACCESSES = 15101,
+  CEC_CI_NO_CAM_SELECTED = 15102,
+  CEC_CI_MASTER_OUT_OF_SCALE = 15103,
+  CEC_CI_RAMPIN_NEEDS_VELACC_VALUES = 15104,
+  CEC_CI_SCALING_INCORRECT = 15105,
+  CEC_CI_TOO_MANY_TAPPETS_PER_CYCLE = 15106,
+  CEC_CB_NOT_IMPLEMENTED = 15107,
+  CEC_GI_RATIO_DENOM = 15108,
+  CEC_GI_INVALID_ACC = 15109,
+  CEC_GI_INVALID_DEC = 15110,
+  CEC_GI_MASTER_REGULATOR_CHANGED = 15111,
+  CEC_GI_INVALID_JERK = 15112,
+  CEC_PH_INVALID_VELACCDEC = 15113,
+  CEC_PH_ROTARYAXIS_PERIOD0 = 15114,
+  CEC_NO_CAM_REF_TYPE = 15115,
+  CEC_CAM_TABLE_DOES_NOT_COVER_MASTER_SCALE = 15116,
+  CEC_CAM_TABLE_EMPTY_MASTER_RANGE = 15117,
+  CEC_CAM_TABLE_INVALID_MASTER_MINMAX = 15118,
+  CEC_CAM_TABLE_INVALID_SLAVE_MINMAX = 15119,
+  CEC_GIP_MASTER_DIRECTION_CHANGE = 15120,
+  CEC_GIP_SLAVE_REVERSAL_CANNOT_BE_AVOIDED = 15121,
+  CEC_GIP_AVOID_REVERSAL_FOR_FINITE_AXIS = 15122,
+  CEC_BC_BL_TOO_BIG = 15123,
+  CEC_QPROF_DIVERGES = 15124,
+  CEC_QPROF_INVALID_PARAMETER = 15125,
+  CEC_QPROF_NO_RESULT = 15126,
+  CEC_QPROF_INVALID_NEW_LBD = 15127,
+  CEC_QPROF_BAD_NEGOTIATION = 15128,
+  CEC_QPROF_INVALID_INTERVAL = 15129,
+  CEC_QPROF_NOT_ENOUGH_PHASES = 15130,
+  CEC_TG_INTERNAL_ERROR = 15131,
+  CEC_SRT_NOT_STANDSTILL_OR_POWEROFF = 15132,
+  CEC_SRT_INVALID_RAMPTYPE = 15133,
+  CEC_SMT_NOT_STANDSTILL_OR_POWEROFF = 15134,
+  CEC_SMT_INVALID_MOVEMENTTYPE_OR_POSITIONPERIOD = 15135,
+  CEC_SMT_AXIS_NOT_VIRTUAL = 15136,
+  CEC_NO_LICENSE = 15137,
+  CEC_INT_VEL_ZERO = 15138,
+  CEC_INT_NO_STOP_AT_END = 15139,
+  CEC_INT_VEL_NONZERO_AT_STOP = 15140,
+  CEC_INT_TOO_MANY_RECURSIONS = 15141,
+  CEC_INT_NO_CHECKVELOCITIES = 15142,
+  CEC_INT_PATH_EXCEEDED = 15143,
+  CEC_INT_VEL_ACC_DEC_ZERO = 15144,
+  CEC_INT_DWIPOTIME_ZERO = 15145,
+  CEC_INT_JERK_NONPOSITIVE = 15146,
+  CEC_INT_QPROF_DIVERGES = 15147,
+  CEC_INT_INVLALID_VELOCITY_MODE = 15148,
+  CEC_INT_TOO_MANY_AXES_INTERPOLATED = 15149,
+  CEC_INT_DEGENERATE_SEGMENT = 15150,
+  CEC_INT2DIR_BUFFER_TOO_SMALL = 15151,
+  CEC_INT2DIR_PATH_FITS_NOT_IN_QUEUE = 15152,
+  CEC_XINT_INVALID_DIRECTION = 15153,
+  CEC_XINT_NOINTERSECTION = 15154,
+  CEC_WAR_INT_OUTQUEUE_TOO_SMALL = 15155,
+  CEC_WAR_END_VELOCITIES_INCORRECT = 15156,
+  CEC_CV_ACC_DEC_VEL_NONPOSITIVE = 15157,
+  CEC_CA_INVALID_ACCDEC_VALUES = 15158,
+  CEC_TOK_INCOMPLETE_TOKEN_AT_END_OF_INPUT = 15159,
+  CEC_TOK_NOT_A_VALID_TOKEN = 15160,
+  CEC_TOK_AMBIGUOUS_INPUT = 15161,
+  CEC_TOK_STRING_TOO_LONG_FOR_TOKEN = 15162,
+  CEC_TOK_INVALID_NUMLIT = 15163,
+  CEC_PRS_FUNC_DECL_TOO_FEW_ARGUMENTS = 15164,
+  CEC_PRS_FUNC_DECL_TOO_MANY_ARGUMENTS = 15165,
+  CEC_PRS_FUNC_DECL_WRONG_ARGUMENT_TYPE = 15166,
+  CEC_PRS_LOCAL_VAR_NOT_FOUND = 15167,
+  CEC_PRS_INVALID_STRING = 15168,
+  CEC_PRS_TOO_MANY_CLOSING_BRACKETS = 15169,
+  CEC_PRS_NO_SUCH_INFIX_OPERATOR = 15170,
+  CEC_PRS_NO_SUCH_PREFIX_OPERATOR = 15171,
+  CEC_PRS_OPERATOR_INVALID_PRECEDENCE = 15172,
+  CEC_PRS_NOT_A_TERM = 15173,
+  CEC_PRS_EXPRESSION_INVALID_SEQUENCE = 15174,
+  CEC_PRS_TOO_MANY_TERMS = 15175,
+  CEC_PRS_STACK_OVERFLOW = 15176,
+  CEC_PRS_VAR_NAME_ALREADY_USED = 15177,
+  CEC_PRS_INCOMPLETE_SENTENCE_IN_TOKEN_QUEUE = 15178,
+  CEC_PRS_TOO_MANY_SUBPROGRAMS = 15179,
+  CEC_PRS_SUBPROGRAM_LOOKUP_FAILED = 15180,
+  CEC_PRS_VAR_NOT_FOUND = 15181,
+  CEC_PRS_TOKEN_TYPE_UNKNOWN = 15182,
+  CEC_PRS_GOT_NO_TERM = 15183,
+  CEC_PRS_INVALID_VAR_TYPE = 15184,
+  CEC_PRS_UNEXPECTED_TOKEN = 15185,
+  CEC_PRS_ID3_EXPECTED = 15186,
+  CEC_PRS_ID_TOO_LONG = 15187,
+  CEC_PRS_GADDRESS_EXPECTED = 15188,
+  CEC_PRS_NWORD_EXPECTED = 15189,
+  CEC_PRS_NWORD_INVALID_SENTENCE_NUMBER = 15190,
+  CEC_PRS_NWORD_SENTENCE_NUMBER_NO_NUMBER_LITERAL = 15191,
+  CEC_PRS_USE_OF_RESERVED_KEYWORD = 15192,
+  CEC_PRS_SUBPROGRAMS_SIGNATURE_MISMATCH = 15193,
+  CEC_PRS_INITIAL_VALUE_HAS_WRONG_TYPE = 15194,
+  CEC_PRS_TOO_MANY_LOCAL_VARIABLES = 15195,
+  CEC_PRS_SUBPROG_MUST_BE_FIRST_SENTENCE = 15196,
+  CEC_PRS_ONLY_ONE_SUBPROGRAM_PER_FILE_ALLOWED = 15197,
+  CEC_PRS_LET_AFTER_REGULAR_SENTENCE = 15198,
+  CEC_PRS_UNMATCHED_END_SUBPROGRAM = 15199,
+  CEC_PRS_UNEXPECTED_TOKENS_AFTER_SUBPROGRAM = 15200,
+  CEC_PRS_MISSING_END_SUBPROGRAM = 15201,
+  CEC_DEC_ACC_TOO_LITTLE = 15202,
+  CEC_DEC_RET_TOO_LITTLE = 15203,
+  CEC_DEC_OUTQUEUE_RAN_EMPTY = 15204,
+  CEC_DEC_JUMP_TO_UNKNOWN_LINE = 15205,
+  CEC_DEC_INVALID_SYNTAX = 15206,
+  CEC_DEC_3DMODE_OBJECT_NOT_SUPPORTED = 15207,
+  CEC_DEC_NEGATIVE_PERIOD = 15208,
+  CEC_DEC_DIMENSIONS_EXCLUSIVE_AU = 15209,
+  CEC_DEC_DIMENSIONS_EXCLUSIVE_BV = 15210,
+  CEC_DEC_DIMENSIONS_EXCLUSIVE_CW = 15211,
+  CEC_DEC_DCS_NOT_ALL_OF_ABC_GIVEN = 15212,
+  CEC_DEC_DCS_2D_NOT_IN_XY_PLANE = 15213,
+  CEC_DEC_CIRCLE_NON_UNIFORM_SCALING = 15214,
+  CEC_DEC_ROTATION_AFFECTS_SCALING = 15215,
+  CEC_DEC_DCS_NOT_ALL_OF_IJK_GIVEN = 15216,
+  CEC_IPR_LOCAL_VAR_UNKNOWN_TYPE = 15217,
+  CEC_IPR_LVALUE_WRONG_TYPE = 15218,
+  CEC_IPR_EVAL_STACK_OVERFLOW = 15219,
+  CEC_IPR_NOT_A_NUMBER = 15220,
+  CEC_IPR_DIVISION_BY_ZERO = 15221,
+  CEC_IPR_INVALID_SCALING_FACTORS = 15222,
+  CEC_IPR_INTERPRETER_STACK_IMBALANCE = 15223,
+  CEC_IPR_INTERPRETER_STACK_OVERFLOW = 15224,
+  CEC_IPR_INVALID_INTERPRETER_STACK_BUFFER = 15225,
+  CEC_IPR_BUFFER_TOO_SMALL = 15226,
+  CEC_DNCCS_NO_DATA = 15227,
+  CEC_DNCCS_TOO_MANY_CALLSTACKS = 15228,
+  CEC_DNCCS_INVALID_PROGRAM_INDEX = 15229,
+  CEC_DNCCS_TOO_MANY_PROGRAMS = 15230,
+  CEC_DNCCS_WRONG_TASK = 15231,
+  CEC_GCV_BUFFER_TOO_SMALL = 15232,
+  CEC_GCV_BUFFER_WRONG_TYPE = 15233,
+  CEC_GCV_UNKNOWN_IPO_LINE = 15234,
+  CEC_CNC_INTERNAL_ERROR = 15235,
+  CEC_PATH_MAX_HPOINTS_EXCEEDED = 15236,
+  CEC_TRC_G75_NOT_ALLOWED = 15237,
+  CEC_TRC_QUEUE_FULL_NON_CARTESIAN = 15238,
+  CEC_TRC_SPLINE3D_5_NOT_SUPPORTED = 15239,
+  CEC_TRC_PLANE_CHANGE_NOT_ALLOWED = 15240,
+  CEC_NAV_MAX_SUBPROGRAM_NESTING_EXCEEDED = 15241,
+  CEC_NAV_RETURN_FROM_MAIN = 15242,
+  CEC_NAV_SUBPROGRAM_DECLARATION_NOT_FOUND = 15243,
+  CEC_NAV_NOT_ENOUGH_SPACE_FOR_COMPLETE_SENTENCE = 15244,
+  CEC_NO_CNC_REF_TYPE = 15245,
+  CEC_NO_OUTQUEUE_TYPE = 15246,
+  CEC_GEOINFO_BUFFER_MISALIGNED = 15247,
+  CEC_3D_MODE_NOT_SUPPORTED = 15248,
+  CEC_SAA_SMOOTHAREA_TOO_LARGE = 15249,
+  CEC_SAA_SP_INVALID_INPUT = 15250,
+  CEC_SA_QUEUE_NOT_IN_BUFFER = 15251,
+  CEC_SA_QUEUE_CHANGED_DURING_OP = 15252,
+  CEC_OS_INVALID_PARAMETER = 15253,
+  CEC_BSSP_IPO_NOT_ACTIVE = 15254,
+  CEC_BS_SAVEDPOS_NOT_REACHED = 15255,
+  CEC_BS_NO_POS_STORED = 15256,
+  CEC_INVALID_FEATURE_FLAG = 15257,
+  CEC_SMB_HFUN_NOT_SUPPORTED = 15258,
+  CEC_SMB_ONLY_3DMODE = 15259,
+  CEC_SMB_ERROR_COMPUTING_SPLINE = 15260,
+  CEC_SMM_INVALID_PARAM_NUMBER = 15261,
+  CEC_INVALID_PARAMETER = 15262,
+  CEC_RNCF_FILE_DOESNT_EXIST = 15263,
+  CEC_RNCF_NO_BUFFER = 15264,
+  CEC_RNCF_BUFFER_TOO_SMALL = 15265,
+  CEC_RNCF_DATA_UNDERRUN = 15266,
+  CEC_RNCF_VAR_COULDNT_BE_REPLACED = 15267,
+  CEC_RNCF_NOT_VARLIST = 15268,
+  CEC_RNCF_NO_STRINGBUFFER = 15269,
+  CEC_RNCF_STRINGBUFFER_OVERRUN = 15270,
+  CEC_RNCF_SUBPROGRAM_FILE_NOT_FOUND = 15271,
+  CEC_RNCQ_FILE_DOESNT_EXIST = 15272,
+  CEC_RNCQ_NO_BUFFER = 15273,
+  CEC_RNCQ_BUFFER_TOO_SMALL = 15274,
+  CEC_RNCQ_UNEXPECTED_EOF = 15275,
+  CEC_ADL_FILE_CANNOT_BE_OPENED = 15276,
+  CEC_ADL_BUFFER_OVERRUN = 15277,
+  CEC_RCAM_FILE_DOESNT_EXIST = 15278,
+  CEC_RCAM_TOO_MUCH_DATA = 15279,
+  CEC_RCAM_WRONG_COMPILE_TYPE = 15280,
+  CEC_RCAM_WRONG_VERSION = 15281,
+  CEC_RCAM_UNEXPECTED_EOF = 15282,
+  CEC_WDPF_CHANNEL_OCCUPIED = 15283,
+  CEC_WDPF_CANNOT_CREATE_FILE = 15284,
+  CEC_WDPF_ERROR_WHEN_READING_PARAMS = 15285,
+  CEC_WDPF_TIMEOUT_PREPARING_LIST = 15286,
+  CEC_ENC_DENOM_ZERO = 15287,
+  CEC_ENC_AXISUSEDBYOTHERFB = 15288,
+  CEC_ENC_FILTER_DEPTH_INVALID = 15289,
+  CEC_PCCQ_POINTBUFFERTOOSMALL = 15290,
+  CEC_PCCQ_INPUTBUFFERFULLBUTNOTFINALIZED = 15291,
+  CEC_AXIS_GROUP_WRONG_STATE = 15292,
+  CEC_AXIS_GROUP_TOO_MANY_AXES = 15293,
+  CEC_AXIS_GROUP_INVALID_DYNLIMITS = 15294,
+  CEC_AXIS_GROUP_INVALID_COORD_SYSTEM = 15295,
+  CEC_AXIS_GROUP_SINGLE_AXIS_ERROR = 15296,
+  CEC_MOVE_INVALID_BUFFER_MODE = 15297,
+  CEC_MOVE_INVALID_DYNAMIC_FACTOR = 15298,
+  CEC_MOVE_INVALID_DYNAMICS = 15299,
+  CEC_AXIS_GROUP_AXIS_NOT_PART_OF_GROUP = 15300,
+  CEC_AXIS_GROUP_NOT_SUPPORTED = 15301,
+  CEC_AXIS_GROUP_KINEMATICS_NOT_SET = 15302,
+  CEC_AXIS_GROUP_WRONG_NUMBER_OF_AXES = 15303,
+  CEC_AXIS_GROUP_INTERRUPTED_BY_SINGLE_AXIS = 15304,
+  CEC_AXIS_GROUP_FOLLOW_SETVALUES = 15305,
+  CEC_AXIS_GROUP_TOO_MANY_DEPENDENCIES = 15306,
+  CEC_AXIS_GROUP_MUTUAL_DEPENDENCY = 15307,
+  CEC_AXIS_GROUP_DEPENDENCY_IN_DIFFERENT_TASK = 15308,
+  CEC_AXIS_GROUP_AXIS_IN_DIFFERENT_TASK = 15309,
+  CEC_AXIS_GROUP_PCS_STILL_IN_USE = 15310,
+  CEC_AXIS_GROUP_CMD_ABORTED_DUE_TO_ERROR = 15311,
+  CEC_AXIS_GROUP_INVALID_PARAMETER = 15312,
+  CEC_AXIS_GROUP_UNSUPPORTED_RAMPTYPE = 15313,
+  CEC_MOVE_INVALID_TRANSITION_PARAMETER = 15314,
+  CEC_AXIS_GROUP_INTERNAL_ERROR = 15315,
+  CEC_AXIS_GROUP_CPTR_CANNOT_FOLLOW = 15316,
+  CEC_AXIS_GROUP_CONTINUE_WRONG_POSITION = 15317,
+  CEC_AXIS_GROUP_CONTINUE_BUFFER_TOO_SMALL = 15318,
+  CEC_AXIS_GROUP_CONTINUE_WRONG_CHECKSUM = 15319,
+  CEC_AXIS_GROUP_IDLE_WAIT_AXES_MOVING = 15320,
+  CEC_AXIS_INVERSE_TRAFO_EXCEEDING_POSLIMITS = 15321,
+  CEC_AXIS_GROUP_CANNOT_ADD_SAME_AXIS = 15322,
+  CEC_AXIS_GROUP_TRANSFORMATION_NOT_SET = 15323,
+  CEC_AXIS_GROUP_NON_RESUMABLE_ERROR = 15324,
+  CEC_KERNEL_PTP_INVALID_TASKCYCLETIME = 15325,
+  CEC_TRAFO_INVALID_PARAMETERS = 15326,
+  CEC_TRAFO_INVALID_CONSTELLATION = 15327,
+  CEC_TRAFO_INVALID_COUPLING = 15328,
+  CEC_TRAFO_NOT_INITIALIZED = 15329,
+  CEC_TRAFO_NO_TOOL_WITH_OFFSET_ALLOWED = 15330,
+  CEC_CP_CACHE_FULL = 15331,
+  CEC_CP_EVAL_ERROR = 15332,
+  CEC_CP_NON_CONTINUABLE_STATE = 15333,
+  CEC_CP_MAX_LENGTH_EXCEEDED = 15334,
+  CEC_CP_ACCELERATION_TOO_HIGH = 15335,
+  CEC_CP_MAX_ITERATIONS_EXCEEDED = 15336,
+  CEC_CP_NO_TRAJECTORY = 15337,
+  CEC_CP_OUT_QUEUE_FULL = 15338,
+  CEC_CP_QUEUE_UNDERRUN = 15339,
+  CEC_CP_INVALID_QUEUE = 15340,
+  CEC_CP_BLENDING_INTERNAL_ERROR = 15341,
+  CEC_CP_CIRCLE_COLLINEAR_POINTS = 15342,
+  CEC_CP_CIRCLE_CENTER_NOT_ON_BISECTOR = 15343,
+  CEC_CP_CIRCLE_RADIUS_ZERO = 15344,
+  CEC_CP_CIRCLE_DISTANCE_LARGER_THAN_DIAMETER = 15345,
+  CEC_CP_CIRCLE_START_AND_ENDPOINT_EQUAL = 15346,
+  CEC_CP_BLENDING_DEGENERATE_SPLINE = 15347,
+  CEC_CP_ELEMENT_TOO_SHORT = 15348,
+  CEC_CP_COULD_NOT_CUT_PATH = 15349,
+  CEC_CP_INVALID_ANGULAR_VEL_ACC = 15350,
+  CEC_CP_INVALID_ORIENTATION = 15351,
+  CEC_CP_TIME_BUDGET_EXCEEDED = 15352,
+  CEC_AXIS_GROUP_AXIS_LIMIT_VIOLATED = 15353,
+  CEC_CP_CONFIGS_DIFFER = 15354,
+  CEC_CP_BUS_TASK_NOT_CALLED = 15355,
+  CEC_CP_NO_ROOT_IN_INTERVAL_FOUND = 15356,
+  CEC_CP_KIN_DOES_NOT_SUPPORT_AXIS_ORIENTATION_IPO = 15357,
+  CEC_CP_AXIS_ORIENTATION_IPO_NOT_SUPPORTED_FOR_CPTR = 15358,
+  CEC_CP_INVALID_PATH_ELEM = 15359,
+  CEC_CP_TRANSITION_NOT_SMOOTH = 15360,
+  CEC_CP_AXIS_ORIENTATION_IPO_CONFIG_DIFFERS = 15361,
+  CEC_CP_AXIS_ORIENTATION_IPO_OFFSET2_NOT_IMPLEMENTED = 15362,
+  CEC_CP_ROTARY_AXIS_PERIOD_MISMATCH = 15363,
+  CEC_CP_ROTARY_AXIS_RANGE_VIOLATION = 15364,
+  CEC_CP_COMPUTE_TARGET_DISCONTINUITY = 15365,
+  CEC_CP_TRAJECTORY_NOT_SMOOTH = 15366,
+  CEC_CP_ERROR_CREATING_PARAM_TRANSFORM = 15367,
+  CEC_CP_PTP_DATA_NUMBER_OF_AXES = 15368,
+  CEC_CP_NEGATIVE_PATH_VELOCITY = 15369,
+  CEC_CP_TRANSITIONING_FROM_SINGLE_AXIS_MOVEMENT_NOT_SUPPORTED = 15370,
+  CEC_CP_PLANNER_NO_PROGRESS = 15371,
+  CEC_PRS_TOO_MANY_OPENING_BRACKETS = 15372,
+  CEC_PRS_TOO_MANY_SUBPROGRAM_PARAMETERS = 15373,
+  CEC_INT_DATA_UNDERRUN = 15374,
+  CEC_UNKNOWNERROR = 15375
+};
+
+/***************************************************************
+** CPS内部错误码
+***************************************************************/
+enum EN_CenterControlCode
+{
+  REC_Successed = 0,
+
+  /* 中控内部错误 20001-20199 */
+  REC_GatewaySetSame = 20001,
+  REC_JsonFormatErr = 20002,
+  REC_MasterNotStarted = 20003,
+  REC_OnMoving = 20004,
+  REC_CmdInvalid = 20005,
+  REC_ParamError = 20006,
+  REC_FormatError = 20007,
+  REC_WaitCmdExecute = 20008,
+  REC_IONotExist = 20009,
+  REC_RobotNotExist = 20010,
+  REC_RobotSlavesVerError = 20011,
+  REC_RobotNotElectrify = 20012,
+  REC_ScriptErrorStop = 20013,
+  REC_CPSException = 20014,
+  REC_RunScript = 20015,
+  REC_PointNotExist = 20016,
+  REC_OverRobotPayload = 20017,
+  REC_StateRefuseCmd = 20018,
+  REC_RobotHardFileNotExist = 20019,
+  REC_RobotNotEnable_CPS = 20020,
+  REC_SelfCollision = 20021,        // 自碰撞
+  REC_Paramempty = 20022,           // 该事件找不到对应的执行函数
+  REC_InnerModuleInitError = 20023, // 内部模块初始化失败
+  REC_abandon20024 = 20024,         // 保存脚本或者配置文件错误
+  REC_DeviceNoSignal = 20025,       // 读取脚本或者配置文件错误
+  REC_ScriptNotRunning = 20026,
+  REC_DeviceNotExist = 20027,    // device Not Exist
+  REC_DeviceSignalError = 20028, // device Has Exist
+  REC_TCPNotExist = 20029,
+  REC_UCSNotExist = 20030,
+  REC_PointCalculateFailed = 20031,
+  REC_MovePathTrajectoryCalculateError = 20032,
+  REC_SHMNULL = 20033,
+  REC_NumberOutofRange = 20034,
+  REC_NoConnect = 20035,
+  REC_IFRetFormatErr = 20036,
+  REC_ClientTimeout = 20037,
+  REC_ClientRecvError = 20038,
+  REC_SafeGuardSignalNotClear = 20039,
+  REC_MovePathTrajectoryPointNumError = 20040,
+  REC_MovePathTrajectoryStateError = 20041,
+  REC_MovePathNotFindTrajectoryName = 20042,
+  REC_MovePathTrajectoryPointsCountError = 20043,
+  REC_TrajectoryOutJointLimit = 20044,
+  REC_TrajectoryOutSideOfWorkingArea = 20045,
+  REC_TrajectorySingularityError = 20046,
+  REC_TrajectoryParamsError = 20047,
+  REC_TrajectoryPointsIsLessThan4 = 20048,
+  REC_TrajectoryJoint3OutJointLimit = 20049,
+  REC_LoadIdentifyDataError = 20050,
+  REC_LoadIdentifyCalculateStateError = 20051,
+  REC_MoveZ_WidthError = 20052,
+  REC_MoveZ_DensityError = 20053,
+  REC_TrajectoryValidPointsIsLessThan4 = 20054,
+  REC_ToolProhibitedAsUCS = 20055, // 禁止使用Tool作为UCS错误
+  REC_SNNotAssigned = 20056,
+  REC_SNPartiallyValid = 20057,
+  REC_SNUnknown = 20058,
+  REC_SNNotSupport = 20059,
+  REC_SNNotSupportSimulate = 20060,
+  REC_SNFormatError = 20061,
+  REC_WriteSNFail = 20062,
+  REC_PwdFormatError = 20063,
+  REC_PwdFieldError = 20064,
+  REC_DuplicateMovePathTrajectoryName = 20065,    // 轨迹名字重复
+  REC_SafePlaneAndConstraintAreaConflict = 20066, // 安全平面和限制区域冲突(同时使用),V6系控制器不支持两者同时使用
+  REC_NotAllowedUpdatingUCS = 20067,              // 不允许更新用户坐标系，eg:安全平面/限制区域在使用这个坐标系时，不允许更新坐标系
+  REC_NotClosedSpace = 20068,                     // 示教的限制区域无法形成封闭区间
+  
+  REC_RobotMoveTypeError = 20069,
+  REC_OutOfMinVelocityLimitError = 20070,
+  REC_OutOfMinAccelerationLimitError = 20071,
+  REC_OutOfMinRadiusLimitError = 20072,
+  REC_VelocityAnomaly = 20073,
+  REC_OutOfMinModbusCoilLimitError = 20074,
+  REC_OutOfMaxModbusCoilLimitError = 20075,
+  REC_OutOfMinModbusHoldingRegisterLimitError = 20076,
+  REC_OutOfMaxModbusHoldingRegisterLimitError = 20077,
+  REC_OutOfMinModbusAddrLimitError = 20078,
+  REC_OutOfMaxModbusAddrLimitError = 20079,
+  REC_OutOfMaxAbsForceError = 20080,
+  REC_OutOfMaxAbsTorqueError = 20081,
+
+  REC_ItemNotExist = 20100,       // The item with specified name does not exist
+  REC_ItemAlreadyExisted = 20101, // The item with the same name already existed
+  REC_AxisCountError = 20102,     //Wrong number of axis group parameters
+
+  /* 配置模块错误 20200-20499 */
+  REC_CfgKeyNotExist = 20200,        // 保存脚本或者配置文件错误
+  REC_ReadCfgFileFaile = 20201,      // 读取脚本或者配置文件错误
+  REC_ScriptNotExist = 20202,        // 脚本不存在
+  REC_FTPScriptNotExist = 20203,     // ftp目录下，用户上传的文件不存在
+  REC_ImportProgramFailed = 20204,   // 用户导入程序文件失败
+  REC_ExportProgramFailed = 20205,   // 用户导出程序文件失败
+  REC_SwitchProgramExistErr = 20206, // 用户切换程序成功但程序存在解析错误
+
+  /* 脚本编译错误 20500-20600 */
+  REC_JsonGlobalVarErr = 20500,       // 编译全局变量错误
+  REC_JsonGlobalPointListErr = 20501, // 编译全局点位列表错误
+  REC_JsonFuncsErr = 20502,           // 编译函数列表错误
+  REC_JsonProgramTreeErr = 20503,     // 编译命令树错误
+  REC_JsonProgramTreeEmpty = 20504,
+  REC_JsonWaitErr = 20505,               // 编译Wait指令错误
+  REC_JsonMoveErr = 20506,               // 编译Move指令错误
+  REC_JsonIFErr = 20507,                 // 编译IF指令错误
+  REC_JsonLoopErr = 20508,               // 编译LOOP指令错误
+  REC_JsonExpressErr = 20509,            // 编译表达式指令错误
+  REC_JsonUnTeachWaypoint = 20510,       // 未示教的点位
+  REC_JsonUnkonwnCmd = 20511,            // 错误的指令
+  REC_JsonSetIOErr = 20512,              // 编译setIO错误
+  REC_CompileScriptNodeNotFound = 20513, // 编译过程未知错误
+  REC_JsonSocketErr = 20514,             // 编译SOCKET指令错误
+  REC_JsonScriptErr = 20515,             // 编译SCRIPT指令错误
+  REC_JsonNameEmpty = 20516,
+  REC_JsonIDEmpty = 20517,
+  REC_JsonSkip = 20518,
+  REC_ProgramFromatIllegal = 20519, // 程序格式非法
+  REC_ProgramVersionTooLow = 20520, // 程序等级太低
+  REC_ReadFileFailed = 20521,       // 读取文件内容失败
+  REC_MapKeyNotExist,
+  /* 脚本运行错误 2060020699 */
+  REC_ScriptRunNoSuchCMDID = 20600, // 找不到该指令ID
+  REC_ScriptHasNoSuchFunc = 20601,
+  REC_ScriptGlobalVarNotExist = 20602,
+  REC_ScriptExitedAbnormally = 20603, // 未知错误，一般为心跳超时/语法错误导致脚本程序未启动
+
+  // TCP通信错误
+  REC_TCPRecvError = 20700, // 接收信息错误
+  REC_TCPError = 20701,     // TCP错误
+  REC_TCPClose = 20702,     // TCP关闭
+
+  REC_HRAppNoExist = 20800,
+  REC_HRAppTimeOut = 20801,
+
+  REC_ModbusTimeout = 20900,
+  REC_WriteModbusError = 20901,
+  REC_ReadModbusError = 20902,
+  REC_48VOverVol = 20903,
+  REC_ResetESTOPTimeout = 20904,
+  REC_BoxSyncTakingTooLong = 20905, //LCC
+  REC_TooManyInvalidUnlocks = 29996,
+  REC_RobotInTimeTamperedStatus = 29997,
+  REC_RobotInLimitedStatus = 29998,
+  REC_RobotUnlockCodeInvalid = 29999,
+  REC_Max_Error_Code = 30000,
+};
+enum EN_SDK_ERROR_Code
+{
+  REC_SDK_NotConnected = 39500,         //跟机器人连接未建立
+  REC_SDK_ParamErrorInCommand = 39501,  //命令输入参数错误
+  REC_SDK_ParamErrorInResponse = 39502, //命令响应中参数错误
+  REC_SDK_SocketCommError = 39503,      //Socket通讯错误(超时、接收异常等)
+  REC_SDK_Connect2CPSFailed = 39504,    //跟机器人建立连接失败
+  REC_SDK_Max_Error_Code = 39999,
+};
+
+#define Macro_IsSlaveDropCode(x) ((x) == CEC_SlaveDropped) || \
+                                     ((x) == CEC_DI_GENERAL_COMMUNICATION_ERROR)
+
+#endif

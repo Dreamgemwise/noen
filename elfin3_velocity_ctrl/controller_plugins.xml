@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!-- <library path="libelfin3_posvel_controller">
+  <class name="elfin3_posvel_controller"
+         type="elfin_ctrl::JointGroupPosVelCtrl"
+         base_class_type="controller_interface::ControllerBase"/>
+</library> -->
+
+
+
+<!-- <library path="libelfin3_pos_controller">
+  <class name="elfin3_pos_controller"
+         type="elfin_ctrl::JointGroupPosCtrl"
+         base_class_type="controller_interface::ControllerBase"/>
+</library> -->
+
+
+<library path="lib/libelfin3_velocity_ctrl">
+  <!--  |path| 指向 catkin 编译后生成的共享库，
+       对应 CMakeLists.txt 里的 add_library() 名称 -->
+  <!-- <class name="elfin3_velocity_ctrl"
+       type="elfin_ctrl::JointGroupTrqCtrl"
+       base_class_type="controller_interface::ControllerBase"/> -->
+  <!-- <class name="elfin_ctrl/JointGroupTrqCtrl"
+         type="elfin_ctrl::JointGroupTrqCtrl"
+         base_class_type="controller_interface::ControllerBase"> -->
+         <class name="elfin_ctrl/JointGroupTrqCtrl"
+         type="elfin_ctrl::JointGroupTrqCtrl"
+         base_class_type="controller_interface::ControllerBase">
+    <description>
+      Joint‑group velocity controller for Elfin3; publishes to VelocityJointInterface.
+    </description>
+  </class>
+
+  <class name="elfin_ctrl/JointGroupPosCtrl"
+         type="elfin_ctrl::JointGroupPosCtrl"
+         base_class_type="controller_interface::ControllerBase">
+    <description>
+      Joint‑group velocity controller for Elfin3; publishes to VelocityJointInterface.
+    </description>
+  </class>
+</library>
+
+
+
+
+
+
+
