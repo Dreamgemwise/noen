@@ -1,0 +1,27 @@
+# effort_controller.yaml (控制所有关节)
+joint_effort_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - elfin_joint1
+    - elfin_joint2
+    - elfin_joint3
+    - elfin_joint4
+    - elfin_joint5
+    - elfin_joint6
+  gains:
+    elfin_joint1: {p: 0.0, i: 0.0, d: 0.0}
+    elfin_joint2: {p: 0.0, i: 0.0, d: 0.0}
+    elfin_joint3: {p: 0.0, i: 0.0, d: 0.0}
+    elfin_joint4: {p: 0.0, i: 0.0, d: 0.0}
+    elfin_joint5: {p: 0.0, i: 0.0, d: 0.0}
+    elfin_joint6: {p: 0.0, i: 0.0, d: 0.0}
+
+
+
+# single_joint_effort.yaml
+# single_joint_effort:
+#   type: effort_controllers/JointTrajectoryController
+#   joints:
+#     - elfin_joint1  # 仅控制第一个关节
+#   gains:
+#     elfin_joint1: {p: 0.0, i: 0.0, d: 0.0}

@@ -1,0 +1,54 @@
+to_zero_controller:
+  type: "elfin_ctrl/JointGroupPosCtrl"
+  joints:
+     - elfin_joint1
+     - elfin_joint2
+     - elfin_joint3
+     - elfin_joint4
+     - elfin_joint5
+     - elfin_joint6
+  publish_rate: 50
+  joint1_pid:
+      p: 0.01  # 根据实际情况调整
+      i: 0.01   # 根据实际情况调整 
+      d: 0.01   # 根据实际情况调整
+  joint2_pid:
+      p: 0.01  # 根据实际情况调整
+      i: 0.01   # 根据实际情况调整 
+      d: 0.01   # 根据实际情况调整
+  joint3_pid:
+      p: 0.01  # 根据实际情况调整
+      i: 0.01   # 根据实际情况调整 
+      d: 0.01   # 根据实际情况调整      
+  joint4_pid:
+      p: 0.01  # 根据实际情况调整
+      i: 0.01   # 根据实际情况调整 
+      d: 0.01   # 根据实际情况调整
+  joint5_pid:
+      p: 0.01  # 根据实际情况调整
+      i: 0.01   # 根据实际情况调整 
+      d: 0.01   # 根据实际情况调整
+  joint6_pid:
+      p: 0.01  # 根据实际情况调整
+      i: 0.01   # 根据实际情况调整 
+      d: 0.01   # 根据实际情况调整
+
+
+# to_zero_controller:
+#   type: "elfin_ctrl/JointGroupPosCtrl"
+#   joints:
+#     - elfin_joint1
+#     - elfin_joint2
+#     - elfin_joint3
+#     - elfin_joint4
+#     - elfin_joint5
+#     - elfin_joint6
+  
+#   # 为每个关节设置PID参数
+#   pid:
+#     elfin_joint1: {p: 100.0, i: 0.01, d: 10.0, i_clamp: 1.0}
+#     elfin_joint2: {p: 100.0, i: 0.01, d: 10.0, i_clamp: 1.0}  # 确保joint2有P参数
+#     elfin_joint3: {p: 100.0, i: 0.01, d: 10.0, i_clamp: 1.0}
+#     elfin_joint4: {p: 50.0, i: 0.01, d: 5.0, i_clamp: 1.0}
+#     elfin_joint5: {p: 50.0, i: 0.01, d: 5.0, i_clamp: 1.0}
+#     elfin_joint6: {p: 20.0, i: 0.01, d: 2.0, i_clamp: 1.0}

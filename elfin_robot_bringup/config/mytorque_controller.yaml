@@ -1,0 +1,85 @@
+mytorque_controller:
+  type: arm_controllers/MyTorqueController
+  joints:
+    - elfin_joint1
+    - elfin_joint2
+    - elfin_joint3
+    - elfin_joint4
+    - elfin_joint5
+    - elfin_joint6
+  gains:
+    elfin_joint1:
+      pid: {p: 8, i: 0.0, d: 0.1, i_clamp: 50, antiwindup: true}
+    elfin_joint2: 
+      pid: {p: 8, i: 0.0, d: 0.1, i_clamp: 50, antiwindup: true}
+    elfin_joint3:
+      pid: {p: 8, i: 0.0, d: 0.1, i_clamp: 50, antiwindup: true}
+    elfin_joint4: 
+      pid: {p: 8, i: 0.0, d: 0.1, i_clamp: 50, antiwindup: true}
+    elfin_joint5: 
+      pid: {p: 8, i: 0.0, d: 0.1, i_clamp: 50, antiwindup: true}
+    elfin_joint6: 
+      pid: {p: 8, i: 0.0, d: 0.1, i_clamp: 50, antiwindup: true}
+  root_link: world
+  tip_link: elfin_link6
+  publish_rate: 500
+  xc: 0.25
+  yc: 0.25
+  r0: 0.08
+  VD: 0.05
+  # 滑膜参数
+  lambda1_: [2.0, 1.5] # 调大似乎能抑制tau_太大，但是不能过大，太大，会导致e_和s_很大，还有会停下很多次,    lambda1_不能太大，太大了会导致停下来；不能太小，太小了会过于灵活
+  lambda2_: [0.8, 0.15] # 适当调大，对停下来的位置有很大好处。
+  lambda3_: [4.0, 8.50]  # lambda3_本质上是调节位置控制，不可过大，其适当能提高收敛速度
+  # 摩擦力 
+  # fc_ – Coulomb动摩擦      (N·m)
+  # fv_ – 粘性阻尼系数       (N·m·s/rad)
+  # fs_ – 静摩擦峰值         (N·m)
+  # kf_  – tanh平滑系数       (1/(rad/s))
+  # wf_  – 静→动过渡速度宽度  (rad/s)
+  fc_: [0.3, 0.15]
+  fv_: [0.05, 0.03]
+  fs_: [0.5, 0.25]
+  kf_: [40.0, 30.0]
+  wf_: [0.05, 0.05]
+  # 自适应增益参数
+  w1_: [11.0, 6.0]
+  gamma1_: [8.0, 6.0] # gamma1_和w1_适当调大，能降低停下来次数，但不能太大，太大，tau_会变得很大。
+  miu_: [0.1, 0.2]
+  eta_: [2.0, 2.0]
+  k1_: [3.0, 3.0]
+  km_: [0.5, 1.0]
+  # 阻抗参数
+  Md_: [2.0, 0.0, 0.0, 2.0]
+  Bd_: [10.0, 10.0]
+  # Bd_: [0.5, 0.5]
+
+
+
+
+  # -------------------------EXP-PONITSMC---------------------------------
+  lambda7_: [1.0, 0.8] # 调大似乎能抑制tau_太大，但是不能过大，太大，会导致e_和s_很大，还有会停下很多次,    lambda1_不能太大，太大了会导致停下来；不能太小，太小了会过于灵活
+  lambda8_: [2.0, 2.0] # 适当调大，对停下来的位置有很大好处。
+  lambda9_: [1.0, 1.0] # lambda3_本质上是调节位置控制，不可过大，其适当能提高收敛速度
+  # kke_: [0.2, 0.2]
+  # epsilon_e_: [0.2, 0.2]
+  kke_: [200.0, 200.0]
+  epsilon_e_: [20.0, 20.0]
+
+
+  # ----------------------Integral_sliding_mode_controller-------------------------------------------
+  ki_: [10.0, 15.0]
+
+
+  # --------------------------------ANN_ad_controller-------------------------------------------
+  kp_: [5.0, 5.0]
+  epsilon_N_: [0.3, 0.3]
+  l_: [5000, 5000, 5000, 5000, 5000, 5000, 5000]
+  # c1_: [-3, -2, -1, 0, 1, 2, 3]    # c是输入状态的范围。
+  # c2_: [-3, -2, -1, 0, 1, 2, 3]
+  c1_: [-30, -20, -10, 0, 10, 20, 30]    # c是输入状态的范围。
+  c2_: [-30, -20, -10, 0, 10, 20, 30]
+
+  b_: [6, 6, 6, 6, 6, 6, 6]   # b不能太小，太小会导致过拟合；也不能太大，太大欠拟合，导致神经网络就不具备泛化能力。
+
+  # b_: [50, 50, 50, 50, 50, 50, 50]

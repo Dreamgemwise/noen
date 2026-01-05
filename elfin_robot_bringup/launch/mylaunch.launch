@@ -1,0 +1,20 @@
+<launch>    
+  <!-- <node name="elfin_ros_control" pkg="elfin_ros_control" type="elfin_hardware_interface" output="screen">
+    <rosparam file="$(find elfin_robot_bringup)/config/elfin_drivers.yaml" command="load"/>
+  </node> -->
+
+<!-- 加载参数 -->
+<rosparam file="$(find elfin_robot_bringup)/config/myconfig.yaml"
+          command="load" />
+
+<!-- 通过 controller_spawner 启动 -->
+<node name="spawner" pkg="controller_manager" type="spawner"
+      respawn="false" output="screen"
+      args="elfin3_velocity_ctrl" />
+      
+</launch>
+
+
+
+
+

@@ -1,0 +1,30 @@
+joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+
+gazebo_ros_control:
+  pid_gains:
+    elfin_joint1:
+      p: 0.0
+      i: 0.0
+      d: 0.0
+    elfin_joint2:
+      p: 0.0
+      i: 0.0
+      d: 0.0
+    elfin_joint3:
+      p: 0.0
+      i: 0.0
+      d: 0.0
+    elfin_joint4:
+      p: 0.0
+      i: 0.0
+      d: 0.0
+    elfin_joint5:
+      p: 0.0
+      i: 0.0
+      d: 0.0
+    elfin_joint6:
+      p: 0.0
+      i: 0.0
+      d: 0.0

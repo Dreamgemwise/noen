@@ -1,0 +1,37 @@
+elfin3_velocity_ctrl:
+  type: elfin_ctrl/JointGroupTrqCtrl
+  joints:
+     - elfin_joint1
+     - elfin_joint2
+     - elfin_joint3
+     - elfin_joint4
+     - elfin_joint5
+     - elfin_joint6
+  publish_rate: 50
+
+# gazebo_ros_control:
+#   pid_gains:
+#     elfin_joint1:
+#       p: 100.0
+#       i: 0.01
+#       d: 10.0
+#     elfin_joint2:
+#       p: 100.0
+#       i: 0.01
+#       d: 10.0
+#     elfin_joint3:
+#       p: 100.0
+#       i: 0.01
+#       d: 10.0
+#     elfin_joint4:
+#       p: 100.0
+#       i: 0.01
+#       d: 10.0
+#     elfin_joint5:
+#       p: 100.0
+#       i: 0.01
+#       d: 10.0
+#     elfin_joint6:
+#       p: 100.0
+#       i: 0.01
+#       d: 10.0

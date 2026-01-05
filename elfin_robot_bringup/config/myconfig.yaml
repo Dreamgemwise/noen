@@ -1,0 +1,81 @@
+elfin3_velocity_ctrl:
+  type: elfin_ctrl/JointGroupTrqCtrl
+  joints:
+     - elfin_joint1
+     - elfin_joint2
+     - elfin_joint3
+     - elfin_joint4
+     - elfin_joint5
+     - elfin_joint6
+  publish_rate: 50
+  joint1_pid:
+    p: 100.0  # 根据实际情况调整
+    i: 0.01   # 根据实际情况调整
+    d: 10.0   # 根据实际情况调整
+
+
+
+
+
+
+
+
+
+
+# elfin3_velocity_ctrl:
+#   type: elfin_ctrl/JointGroupTrqCtrl
+#   joints:
+#      - elfin_joint1
+#      - elfin_joint2
+#      - elfin_joint3
+#      - elfin_joint4
+#      - elfin_joint5
+#      - elfin_joint6
+#   publish_rate: 50
+
+
+# elfin3_velocity_ctrl:
+#   type: elfin_ctrl/JointGroupVelCtrl
+#   joints:
+#     - elfin_joint1
+#     - elfin_joint2
+#     - elfin_joint3
+#     - elfin_joint4
+#     - elfin_joint5
+#     - elfin_joint6
+#   publish_rate: 50
+#   hardware_interface:
+#     type: hardware_interface/VelocityJointInterface
+#   cmd_timeout: 1.0
+#   joint1_fixed_vel: 0.5
+
+
+
+
+
+# gazebo_ros_control:
+#   pid_gains:
+#     elfin_joint1:
+#       p: 100.0
+#       i: 0.01
+#       d: 10.0
+#     elfin_joint2:
+#       p: 100.0
+#       i: 0.01
+#       d: 10.0
+#     elfin_joint3:
+#       p: 100.0
+#       i: 0.01
+#       d: 10.0
+#     elfin_joint4:
+#       p: 100.0
+#       i: 0.01
+#       d: 10.0
+#     elfin_joint5:
+#       p: 100.0
+#       i: 0.01
+#       d: 10.0
+#     elfin_joint6:
+#       p: 100.0
+#       i: 0.01
+#       d: 10.0

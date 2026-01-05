@@ -1,0 +1,19 @@
+<!-- sintTorqueController -->
+
+<launch>
+  
+      
+  <!-- <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model elfin3 -param robot_description"/> -->
+
+  <!-- Controller: 
+      - gravity_comp_controller
+      - computed_torque_controller
+      - passivity_controller
+      - time_delay_controller
+      - computed_torque_clik_controller -->
+  <arg name="controller" default="sintTorqueController"/>
+  <rosparam file="$(find elfin_robot_bringup)/config/$(arg controller).yaml" command="load"/>
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+      output="screen" args="$(arg controller)"/>
+</launch>

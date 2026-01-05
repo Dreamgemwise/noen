@@ -1,0 +1,19 @@
+# to_init_pose_controller:
+#   type: "InitPoseController"
+#   joints: [joint1, joint2, joint3, joint4, joint5, joint6]
+#   target_deg: [0, 0, 90, 0, 90, 0]   # 可选，自定义角度（单位 °）
+
+
+to_init_pose_controller:
+  type: arm_controllers/InitPoseController
+  joints:
+    - elfin_joint1
+    - elfin_joint2
+    - elfin_joint3
+    - elfin_joint4
+    - elfin_joint5
+    - elfin_joint6
+  target_deg: [90, 0, 90, 90, -90, 0]
+  move_time: 7.0
+  max_vel_deg: [30, 30, 30, 45, 45, 60]
+  publish_rate: 500

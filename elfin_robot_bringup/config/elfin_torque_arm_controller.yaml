@@ -1,0 +1,18 @@
+# type: effort_controllers/JointTrajectoryController
+# joints: [elfin_joint1, elfin_joint2, elfin_joint3, elfin_joint4, elfin_joint5, elfin_joint6]
+# gains: {elfin_joint1: {p: 0.0, d: 0.0, i: 0.0}, elfin_joint1: {p: 0.0, d: 0.0, i: 0.0},elfin_joint1: {p: 0.0, d: 0.0, i: 0.0},elfin_joint1: {p: 0.0, d: 0.0, i: 0.0},elfin_joint1: {p: 0.0, d: 0.0, i: 0.0},elfin_joint1: {p: 0.0, d: 0.0, i: 0.0},}   # 先全部零，纯力矩直通
+
+elfin_torque_arm_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints: [elfin_joint1, elfin_joint2, elfin_joint3, elfin_joint4, elfin_joint5, elfin_joint6]
+  gains:
+    elfin_joint1: {p: 0.0, d: 0.0, i: 0.0}
+    elfin_joint2: {p: 0.0, d: 0.0, i: 0.0}
+    elfin_joint3: {p: 0.0, d: 0.0, i: 0.0}
+    elfin_joint4: {p: 0.0, d: 0.0, i: 0.0}
+    elfin_joint5: {p: 0.0, d: 0.0, i: 0.0}
+    elfin_joint6: {p: 0.0, d: 0.0, i: 0.0}
+    # 所有增益设为 0.0 表示使用纯力矩控制模式（直通模式）
+
+
+

@@ -1,0 +1,8 @@
+<!-- effort_controller.launch -->
+<launch>
+
+  <rosparam file="$(find elfin_robot_bringup)/config/simple_effort_control.yaml" command="load" />
+  <node name="controller_manageraa" pkg="controller_manager" type="spawner" 
+        args="joint_effort_controller" output="screen" />
+  
+</launch>

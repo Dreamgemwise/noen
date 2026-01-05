@@ -1,0 +1,70 @@
+elfin_arm_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - elfin_joint1
+     - elfin_joint2
+     - elfin_joint3
+     - elfin_joint4
+     - elfin_joint5
+     - elfin_joint6
+  constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.1
+  stop_trajectory_duration: 0.05
+  state_publish_rate:  25
+  action_monitor_rate: 10
+
+# elfin3_vel_controller:
+#   type: "elfin_ctrl/JointGroupVelCtrl"
+#   joints: [elfin_joint1, elfin_joint2, elfin_joint3,
+#            elfin_joint4, elfin_joint5, elfin_joint6]
+#   required_interfaces:
+#     - hardware_interface/VelocityJointInterface
+
+
+# elfin3_vel_controller:
+#   type: elfin_ctrl/JointGroupVelCtrl
+#   joints: [elfin_joint1, elfin_joint2, elfin_joint3,
+#            elfin_joint4, elfin_joint5, elfin_joint6]
+#   publish_rate: 50
+
+elfin3_velocity_ctrl:
+# elfin3_vel_controller:
+  type: elfin_ctrl/JointGroupTrqCtrl
+  joints:
+     - elfin_joint1
+     - elfin_joint2
+     - elfin_joint3
+     - elfin_joint4
+     - elfin_joint5
+     - elfin_joint6
+  publish_rate: 50
+# elfin3_posvel_controller:
+#   type: elfin_ctrl/JointGroupPosVelCtrl
+#   joints: [elfin_joint1, elfin_joint2, elfin_joint3,
+#            elfin_joint4, elfin_joint5, elfin_joint6]
+#   publish_rate: 50
+
+
+# # elfin3_velocity_ctrl:
+# #   type: elfin_ctrl/JointGroupVelCtrl
+# #   joints:
+# #      - elfin_joint1
+# #      - elfin_joint2
+# #      - elfin_joint3
+# #      - elfin_joint4
+# #      - elfin_joint5
+# #      - elfin_joint6
+# #   publish_rate: 50
+
+# elfin3_pos_controller:
+#   type: elfin_ctrl/JointGroupPosCtrl
+#   joints: [elfin_joint1, elfin_joint2, elfin_joint3,
+#            elfin_joint4, elfin_joint5, elfin_joint6]
+#   publish_rate: 50      # 可选
+
+
+
+
+
+

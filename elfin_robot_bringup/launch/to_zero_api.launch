@@ -1,0 +1,4 @@
+<launch>
+    <rosparam command="load" file="$(find elfin_robot_bringup)/config/elfin_arm_control.yaml"/>
+    <node name="to_zero_api_node" pkg="controller_manager" type="spawner" args="elfin_arm_controller" />
+</launch>
